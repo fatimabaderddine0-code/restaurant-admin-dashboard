@@ -1,41 +1,175 @@
-Sidebar Component
-Purpose: Displays navigation links for Dashboard, Users, Products, and Orders.
-Props: None.
-State: None.
-Usage: Used inside App.jsx.
+# Restaurant Admin Dashboard Documentation
 
-TopNavbar Component
-Purpose: Displays the dashboard title, admin user, and logout button.
-Props: None.
-State: None.
-Usage: Used inside App.jsx.
+## 1. Project Overview
 
-OrdersChart Component
-Purpose: Displays a bar chart for weekly orders using Recharts.
-Props: None.
-State: None.
-Usage: Used inside Dashboard.jsx.
+The Restaurant Admin Dashboard is a responsive React application used to manage restaurant data such as users, products, and orders.
 
-Dashboard Page
-Purpose: Displays total users, products, orders, and the weekly orders chart.
-Props: None.
-State: None.
-Usage: Displayed through React Router at /dashboard.
+The project includes:
+- Dashboard statistics
+- Users management UI
+- Products management UI
+- Orders management UI
+- Search
+- Pagination
+- Responsive design
+- Bar chart
+- React Router navigation
 
-Users Page
-Purpose: Displays users in a table with search, pagination, Edit, and Delete UI.
-Props: None.
-State: searchTerm and currentPage.
-Usage: Displayed through React Router at /users.
+---
 
-Products Page
-Purpose: Displays products in a table with search, pagination, Edit, and Delete UI.
-Props: None.
-State: searchTerm and currentPage.
-Usage: Displayed through React Router at /products.
+## 2. Technologies Used
 
-Orders Page
-Purpose: Displays orders in a table with search, pagination, Edit, and Delete UI.
-Props: None.
-State: searchTerm and currentPage.
-Usage: Displayed through React Router at /orders.
+- React.js
+- JavaScript
+- Bootstrap
+- React Router
+- Recharts
+- CSS
+- Vite
+
+---
+
+## 3. Components
+
+### Sidebar
+
+**Purpose:**  
+Displays navigation links for Dashboard, Users, Products, and Orders.
+
+**Props:**  
+None.
+
+**State:**  
+None.
+
+**Used in:**  
+`App.jsx`
+
+---
+
+### TopNavbar
+
+**Purpose:**  
+Displays the dashboard title, admin user, and logout button.
+
+**Props:**  
+None.
+
+**State:**  
+None.
+
+**Used in:**  
+`App.jsx`
+
+---
+
+### OrdersChart
+
+**Purpose:**  
+Displays weekly order statistics using a bar chart.
+
+**Library:**  
+Recharts.
+
+**Props:**  
+None.
+
+**State:**  
+None.
+
+**Used in:**  
+`Dashboard.jsx`
+
+---
+
+## 4. Pages
+
+### Dashboard
+
+**Purpose:**  
+Displays general restaurant statistics.
+
+**Features:**
+- Total Users
+- Total Products
+- Total Orders
+- Weekly Orders Chart
+
+**Route:**  
+`/dashboard`
+
+---
+
+### Users Page
+
+**Purpose:**  
+Displays users in a table.
+
+**Features:**
+- Search users by name
+- Pagination
+- Edit button
+- Delete button
+
+**State:**
+- `searchTerm`
+- `currentPage`
+
+**Route:**  
+`/users`
+
+---
+
+### Products Page
+
+**Purpose:**  
+Displays restaurant products.
+
+**Features:**
+- Search products by name
+- Pagination
+- Edit button
+- Delete button
+
+**State:**
+- `searchTerm`
+- `currentPage`
+
+**Route:**  
+`/products`
+
+---
+
+### Orders Page
+
+**Purpose:**  
+Displays restaurant orders.
+
+**Features:**
+- Search orders by user
+- Pagination
+- Edit button
+- Delete button
+
+**State:**
+- `searchTerm`
+- `currentPage`
+
+**Route:**  
+`/orders`
+
+---
+
+## 5. React Hooks
+
+### useState
+
+Used to store and update changing values such as:
+
+- Search text
+- Current page number
+
+Example:
+
+```jsx
+const [searchTerm, setSearchTerm] = useState("");
