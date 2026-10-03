@@ -1,0 +1,154 @@
+.app-layout {
+  display: flex;
+}
+.sidebar {
+  width: 230px;
+  min-height: 100vh;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  padding: 20px;
+}
+.sidebar a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 12px 10px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+}
+.sidebar a:hover {
+  background-color: var(--secondary-color);
+}
+.main-content {
+  flex: 1;
+}
+
+.top-navbar {
+  width: 100%;
+}
+.top-navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+}
+.card {
+  border: none;
+  border-radius: 14px;
+  background-color: white;
+}
+
+.card h5 {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.card h2 {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+.recharts-responsive-container {
+  margin-top: 10px;
+}
+.page-title {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+.table {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.table thead {
+  background-color: var(--primary-color);
+  color: white;
+}
+.form-control {
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(73, 92, 61, 0.15);
+}
+/* .btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+} */
+.edit-btn {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+}
+
+.delete-btn {
+  background-color: #8B4A3C;
+  color: white;
+  border: none;
+}
+.pagination-btn {
+  color: var(--primary-color) !important;
+  border: 1px solid var(--primary-color) !important;
+  background-color: white !important;
+  padding: 6px 10px !important;
+  border-radius: 6px !important;
+}
+
+.pagination-btn:hover {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+}
+@media (max-width: 768px) {
+  .app-layout {
+    flex-direction: column;
+  }
+
+.top-navbar {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 15px 20px;
+}
+
+.top-navbar .d-flex {
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .sidebar h2 {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .sidebar a {
+    margin-bottom: 0;
+  }
+
+  .main-content {
+    width: 100%;
+  }
+  .top-navbar span {
+  white-space: nowrap;
+}
+}
