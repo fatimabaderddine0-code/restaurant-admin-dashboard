@@ -1,14 +1,32 @@
-import { Link } from"react-router-dom";
-function Sidebar(){
-    return(
-        <div className="sidebar">
-            <h3>Admin Panel</h3>
+import { NavLink } from "react-router-dom";
 
-            <Link to="/dashboard">Dashboard</Link>
-            <Link to="/users">Users</Link>
-            <Link to="/products">Products</Link>
-            <Link to="/orders">Orders</Link>
-        </div>
-    );
+function Sidebar() {
+  return (
+    <aside className="sidebar">
+      <h2>La Tavola Admin</h2>
+
+      <NavLink
+        to="/dashboard"
+        className={({ isActive }) => (isActive ? "active-link" : "")}
+      >
+        Dashboard
+      </NavLink>
+
+      <NavLink
+        to="/products"
+        className={({ isActive }) => (isActive ? "active-link" : "")}
+      >
+        Products
+      </NavLink>
+
+      <NavLink
+        to="/categories"
+        className={({ isActive }) => (isActive ? "active-link" : "")}
+      >
+        Categories
+      </NavLink>
+    </aside>
+  );
 }
+
 export default Sidebar;

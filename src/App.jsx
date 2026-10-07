@@ -4,48 +4,32 @@ import Sidebar from "./components/Sidebar";
 import TopNavbar from "./components/TopNavbar";
 
 import Dashboard from "./pages/Dashboard";
-import Users from "./pages/Users";
+import Categories from "./pages/Categories";
+import Products from "./pages/Products";
+import Login from "./pages/Login";
 
 import { Routes, Route } from "react-router-dom";
-import Products from "./pages/Products";
-import Orders from "./pages/Orders";
 import { useEffect } from "react";
+
 function App() {
   useEffect(() => {
-  document.title = "Restaurant Admin Dashboard";
-}, []);
+    document.title = "La Tavola Admin";
+  }, []);
+
   return (
     <div className="app-layout">
-
       <Sidebar />
 
       <div className="main-content">
-
         <TopNavbar />
 
         <Routes>
-
-          <Route
-            path="/dashboard"
-            element={<Dashboard />}
-          />
-
-          <Route
-            path="/users"
-            element={<Users />}
-          />
-          <Route
-            path="/products"
-            element={<Products/>}
-          />
-          <Route 
-            path="/orders"
-            element={<Orders/>}
-          />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
-
       </div>
-
     </div>
   );
 }
