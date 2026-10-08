@@ -8,7 +8,7 @@ function Categories() {
   const [showForm, setShowForm] = useState(false);
 
   const loadCategories = () => {
-    fetch("http://localhost:5000/api/categories")
+    fetch("https://digital-menu-backend-731h.onrender.com/api/categories")
       .then((response) => response.json())
       .then((data) => {
         setCategories(data);
@@ -38,8 +38,8 @@ function Categories() {
     }
 
     const url = editingId
-      ? `http://localhost:5000/api/categories/${editingId}`
-      : "http://localhost:5000/api/categories";
+      ? `https://digital-menu-backend-731h.onrender.com//api/categories/${editingId}`
+      : "https://digital-menu-backend-731h.onrender.com//api/categories";
 
     const method = editingId ? "PUT" : "POST";
 
@@ -98,7 +98,7 @@ function Categories() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/categories/${id}`,
+        `https://digital-menu-backend-731h.onrender.com/api/categories/${id}`,
         {
           method: "DELETE",
           headers: {

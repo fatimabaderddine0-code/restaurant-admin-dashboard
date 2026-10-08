@@ -5,7 +5,7 @@ function Dashboard() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/items")
+    fetch("https://digital-menu-backend-731h.onrender.com/api/items")
       .then((response) => response.json())
       .then((data) => {
         setItems(data);
@@ -14,7 +14,7 @@ function Dashboard() {
         console.log("Items error:", error);
       });
 
-    fetch("http://localhost:5000/api/categories")
+    fetch("https://digital-menu-backend-731h.onrender.com/api/categories")
       .then((response) => response.json())
       .then((data) => {
         setCategories(data);

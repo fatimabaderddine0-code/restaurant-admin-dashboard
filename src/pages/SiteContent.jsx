@@ -6,7 +6,7 @@ function SiteContent() {
   const [message, setMessage] = useState("");
 
   const loadSections = () => {
-    fetch("http://localhost:5000/api/sections")
+    fetch("https://digital-menu-backend-731h.onrender.com/api/sections")
       .then((response) => response.json())
       .then((data) => {
         setSections(data);
@@ -49,7 +49,7 @@ function SiteContent() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/sections/${id}`,
+        `https://digital-menu-backend-731h.onrender.com/api/sections/${id}`,
         {
           method: "PUT",
           headers: {
@@ -99,7 +99,7 @@ function SiteContent() {
 
           {section.image ? (
             <img
-              src={`http://localhost:5000/uploads/${section.image}`}
+              src={`https://digital-menu-backend-731h.onrender.com/uploads/${section.image}`}
               alt={section.section_name}
               className="section-preview"
             />

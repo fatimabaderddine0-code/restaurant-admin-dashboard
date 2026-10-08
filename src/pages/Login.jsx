@@ -15,7 +15,7 @@ function Login() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/auth/login",
+        "https://digital-menu-backend-731h.onrender.com/api/auth/login",
         {
           method: "POST",
           headers: {

@@ -20,7 +20,7 @@ function Products() {
   const productsPerPage = 2;
 
   const loadProducts = () => {
-    fetch("http://localhost:5000/api/items")
+    fetch("https://digital-menu-backend-731h.onrender.com/api/items")
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
@@ -35,7 +35,7 @@ function Products() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/categories")
+    fetch("https://digital-menu-backend-731h.onrender.com/api/categories")
       .then((response) => response.json())
       .then((data) => {
         setCategories(data);
@@ -76,8 +76,8 @@ function Products() {
     }
 
     const url = editingId
-      ? `http://localhost:5000/api/items/${editingId}`
-      : "http://localhost:5000/api/items";
+      ? `https://digital-menu-backend-731h.onrender.com/api/items/${editingId}`
+      : "https://digital-menu-backend-731h.onrender.com/api/items";
 
     const method = editingId ? "PUT" : "POST";
 
@@ -132,7 +132,7 @@ function Products() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/items/${id}`,
+        `https://digital-menu-backend-731h.onrender.com/api/items/${id}`,
         {
           method: "DELETE",
           headers: {
