@@ -99,7 +99,7 @@ function SiteContent() {
 
           {section.image ? (
             <img
-              src={`https://digital-menu-backend-731h.onrender.com/uploads/${section.image}`}
+              src={section.image}
               alt={section.section_name}
               className="section-preview"
             />
