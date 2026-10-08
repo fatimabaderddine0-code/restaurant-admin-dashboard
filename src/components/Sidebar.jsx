@@ -25,6 +25,12 @@ function Sidebar() {
       >
         Categories
       </NavLink>
+      <NavLink
+  to="/site-content"
+  className={({ isActive }) => (isActive ? "active-link" : "")}
+>
+  Site Content
+</NavLink>
     </aside>
   );
 }

@@ -5,6 +5,7 @@ function Categories() {
   const [name, setName] = useState("");
   const [editingId, setEditingId] = useState(null);
   const [message, setMessage] = useState("");
+  const [showForm, setShowForm] = useState(false);
 
   const loadCategories = () => {
     fetch("http://localhost:5000/api/categories")
@@ -69,6 +70,7 @@ function Categories() {
 
       setName("");
       setEditingId(null);
+      setShowForm(false);
 
       loadCategories();
     } catch (error) {
@@ -80,6 +82,7 @@ function Categories() {
   const handleEdit = (category) => {
     setName(category.name);
     setEditingId(category.id);
+    setShowForm(true);
     setMessage("");
   };
 
@@ -124,49 +127,66 @@ function Categories() {
     setName("");
     setEditingId(null);
     setMessage("");
+    setShowForm(false);
   };
 
   return (
     <div className="container-fluid">
       <h1 className="page-title">Categories</h1>
 
-      <div className="card p-4 shadow-sm mb-4">
-        <h4>
-          {editingId ? "Edit Category" : "Add Category"}
-        </h4>
+      <button
+        className="btn btn-success mb-3"
+        onClick={() => {
+          setShowForm(true);
+          setEditingId(null);
+          setName("");
+          setMessage("");
+        }}
+      >
+        + Add Category
+      </button>
 
-        <input
-          className="form-control my-3"
-          type="text"
-          placeholder="Category name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-        />
+      {showForm && (
+        <div className="card p-4 shadow-sm mb-4">
+          <h4>
+            {editingId ? "Edit Category" : "Add Category"}
+          </h4>
 
-        <div className="d-flex gap-2">
-          <button
-            className="btn btn-success"
-            onClick={handleSubmit}
-          >
-            {editingId ? "Update Category" : "Add Category"}
-          </button>
+          <input
+            className="form-control my-3"
+            type="text"
+            placeholder="Category name"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+          />
 
-          {editingId && (
+          <div className="d-flex gap-2">
+            <button
+              className="btn btn-success"
+              onClick={handleSubmit}
+            >
+              {editingId ? "Update Category" : "Add Category"}
+            </button>
+
             <button
               className="btn btn-secondary"
               onClick={handleCancel}
             >
               Cancel
             </button>
+          </div>
+
+          {message && (
+            <p className="mt-3 mb-0">
+              {message}
+            </p>
           )}
         </div>
+      )}
 
-        {message && (
-          <p className="mt-3 mb-0">
-            {message}
-          </p>
-        )}
-      </div>
+      {message && !showForm && (
+        <p>{message}</p>
+      )}
 
       <div className="card p-4 shadow-sm">
         <table className="table">

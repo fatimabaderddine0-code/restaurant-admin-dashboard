@@ -15,6 +15,7 @@ function Products() {
 
   const [editingId, setEditingId] = useState(null);
   const [message, setMessage] = useState("");
+  const [showForm, setShowForm] = useState(false);
 
   const productsPerPage = 2;
 
@@ -84,15 +85,12 @@ function Products() {
       const response = await fetch(url, {
         method: method,
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
-        body: formData
+        body: formData,
       });
 
       const text = await response.text();
-
-      console.log("STATUS:", response.status);
-      console.log("RESPONSE:", text);
 
       let data = {};
 
@@ -100,14 +98,12 @@ function Products() {
         data = JSON.parse(text);
       } catch {
         data = {
-          message: text
+          message: text,
         };
       }
 
       if (!response.ok) {
-        setMessage(
-          data.message || "Something went wrong."
-        );
+        setMessage(data.message || "Something went wrong.");
         return;
       }
 
@@ -119,7 +115,7 @@ function Products() {
 
       loadProducts();
       clearForm();
-
+      setShowForm(false);
     } catch (error) {
       console.log("Submit error:", error);
       setMessage("Could not connect to the server.");
@@ -140,28 +136,23 @@ function Products() {
         {
           method: "DELETE",
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
       const data = await response.json();
 
       if (!response.ok) {
-        setMessage(
-          data.message || "Delete failed."
-        );
+        setMessage(data.message || "Delete failed.");
         return;
       }
 
       setProducts((prevProducts) =>
-        prevProducts.filter(
-          (product) => product.id !== id
-        )
+        prevProducts.filter((product) => product.id !== id)
       );
 
       setMessage("Product deleted successfully.");
-
     } catch (error) {
       console.log("Delete error:", error);
       setMessage("Could not connect to the server.");
@@ -175,6 +166,13 @@ function Products() {
     setPrice(product.price);
     setCategoryId(product.category_id);
     setImage(null);
+    setMessage("");
+    setShowForm(true);
+  };
+
+  const handleCancel = () => {
+    clearForm();
+    setShowForm(false);
     setMessage("");
   };
 
@@ -217,105 +215,127 @@ function Products() {
         }}
       />
 
-      <div className="card p-3 mb-4">
+      <button
+        className="btn btn-success mb-3"
+        onClick={() => {
+          setShowForm(true);
+          setEditingId(null);
+          setName("");
+          setDescription("");
+          setPrice("");
+          setCategoryId("");
+          setImage(null);
+          setMessage("");
+        }}
+      >
+        + Add Product
+      </button>
 
-        <h4>
-          {editingId
-            ? "Edit Product"
-            : "Add Product"}
-        </h4>
+      {showForm && (
+        <div className="card p-3 mb-4">
 
-        {message && (
-          <div className="alert alert-info">
-            {message}
-          </div>
-        )}
-
-        <input
-          type="text"
-          className="form-control mb-2"
-          placeholder="Name"
-          value={name}
-          onChange={(event) =>
-            setName(event.target.value)
-          }
-        />
-
-        <input
-          type="text"
-          className="form-control mb-2"
-          placeholder="Description"
-          value={description}
-          onChange={(event) =>
-            setDescription(event.target.value)
-          }
-        />
-
-        <input
-          type="number"
-          className="form-control mb-2"
-          placeholder="Price"
-          value={price}
-          onChange={(event) =>
-            setPrice(event.target.value)
-          }
-        />
-
-        <select
-          className="form-select mb-2"
-          value={categoryId}
-          onChange={(event) =>
-            setCategoryId(event.target.value)
-          }
-        >
-          <option value="">
-            Select Category
-          </option>
-
-          {categories.map((category) => (
-            <option
-              key={category.id}
-              value={category.id}
-            >
-              {category.name}
-            </option>
-          ))}
-        </select>
-
-        <input
-          type="file"
-          className="form-control mb-3"
-          accept="image/*"
-          onChange={(event) =>
-            setImage(event.target.files[0])
-          }
-        />
-
-        <div className="d-flex gap-2">
-
-          <button
-            type="button"
-            className="btn btn-success"
-            onClick={handleSubmit}
-          >
+          <h4>
             {editingId
-              ? "Update Product"
+              ? "Edit Product"
               : "Add Product"}
-          </button>
+          </h4>
 
-          {editingId && (
+          {message && (
+            <div className="alert alert-info">
+              {message}
+            </div>
+          )}
+
+          <input
+            type="text"
+            className="form-control mb-2"
+            placeholder="Name"
+            value={name}
+            onChange={(event) =>
+              setName(event.target.value)
+            }
+          />
+
+          <input
+            type="text"
+            className="form-control mb-2"
+            placeholder="Description"
+            value={description}
+            onChange={(event) =>
+              setDescription(event.target.value)
+            }
+          />
+
+          <input
+            type="number"
+            className="form-control mb-2"
+            placeholder="Price"
+            value={price}
+            onChange={(event) =>
+              setPrice(event.target.value)
+            }
+          />
+
+          <select
+            className="form-select mb-2"
+            value={categoryId}
+            onChange={(event) =>
+              setCategoryId(event.target.value)
+            }
+          >
+            <option value="">
+              Select Category
+            </option>
+
+            {categories.map((category) => (
+              <option
+                key={category.id}
+                value={category.id}
+              >
+                {category.name}
+              </option>
+            ))}
+          </select>
+
+          <input
+            type="file"
+            className="form-control mb-3"
+            accept="image/*"
+            onChange={(event) =>
+              setImage(event.target.files[0])
+            }
+          />
+
+          <div className="d-flex gap-2">
+
+            <button
+              type="button"
+              className="btn btn-success"
+              onClick={handleSubmit}
+            >
+              {editingId
+                ? "Update Product"
+                : "Add Product"}
+            </button>
+
             <button
               type="button"
               className="btn btn-secondary"
-              onClick={clearForm}
+              onClick={handleCancel}
             >
               Cancel
             </button>
-          )}
+
+          </div>
 
         </div>
+      )}
 
-      </div>
+      {message && !showForm && (
+        <div className="alert alert-info">
+          {message}
+        </div>
+      )}
 
       <div className="table-responsive">
 
@@ -334,7 +354,6 @@ function Products() {
           <tbody>
 
             {currentProducts.map((product) => (
-
               <tr key={product.id}>
 
                 <td>{product.id}</td>
@@ -378,7 +397,6 @@ function Products() {
                 </td>
 
               </tr>
-
             ))}
 
           </tbody>
@@ -392,7 +410,6 @@ function Products() {
         {Array.from(
           { length: totalPages },
           (_, index) => (
-
             <button
               type="button"
               key={index}
@@ -403,7 +420,6 @@ function Products() {
             >
               {index + 1}
             </button>
-
           )
         )}
 

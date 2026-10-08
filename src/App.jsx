@@ -2,7 +2,7 @@ import "./App.css";
 
 import Sidebar from "./components/Sidebar";
 import TopNavbar from "./components/TopNavbar";
-
+import SiteContent from "./pages/SiteContent";
 import Dashboard from "./pages/Dashboard";
 import Categories from "./pages/Categories";
 import Products from "./pages/Products";
@@ -28,6 +28,7 @@ function App() {
           <Route path="/categories" element={<Categories />} />
           <Route path="/products" element={<Products />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/site-content" element={<SiteContent />} />
         </Routes>
       </div>
     </div>
