@@ -103,9 +103,13 @@ function Products() {
       }
 
       if (!response.ok) {
-        setMessage(data.message || "Something went wrong.");
-        return;
-      }
+  setMessage(
+    `${data.message || "Something went wrong."} ${
+      data.error ? "- " + data.error : ""
+    }`
+  );
+  return;
+}
 
       setMessage(
         editingId
@@ -144,9 +148,13 @@ function Products() {
       const data = await response.json();
 
       if (!response.ok) {
-        setMessage(data.message || "Delete failed.");
-        return;
-      }
+       setMessage(
+      `${data.message || "Something went wrong."} ${
+       data.error ? "- " + data.error : ""
+    }`
+  );
+  return;
+}
 
       setProducts((prevProducts) =>
         prevProducts.filter((product) => product.id !== id)
