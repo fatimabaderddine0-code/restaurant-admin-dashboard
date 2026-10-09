@@ -573,3 +573,69 @@ body {
     height: 190px;
   }
 }
+/* =====================
+   RESPONSIVE SIDEBAR MENU
+===================== */
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-toggle {
+  display: none;
+
+  border: none;
+  background: transparent;
+
+  color: white;
+  font-size: 26px;
+
+  cursor: pointer;
+}
+
+.sidebar-links {
+  display: block;
+}
+
+/* Active link */
+.sidebar-links a.active {
+  background-color: rgba(255, 255, 255, 0.16);
+  color: white;
+  font-weight: 600;
+}
+
+
+/* Mobile */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+
+    display: block;
+  }
+
+  .sidebar-header {
+    width: 100%;
+  }
+
+  .sidebar-toggle {
+    display: block;
+  }
+
+  .sidebar-links {
+    display: none;
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  .sidebar-links.open {
+    display: block;
+  }
+
+  .sidebar-links a {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+}

@@ -38,8 +38,8 @@ function Categories() {
     }
 
     const url = editingId
-      ? `https://digital-menu-backend-731h.onrender.com//api/categories/${editingId}`
-      : "https://digital-menu-backend-731h.onrender.com//api/categories";
+      ? `https://digital-menu-backend-731h.onrender.com/api/categories/${editingId}`
+      : "https://digital-menu-backend-731h.onrender.com/api/categories";
 
     const method = editingId ? "PUT" : "POST";
 

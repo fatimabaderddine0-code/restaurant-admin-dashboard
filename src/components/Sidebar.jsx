@@ -1,36 +1,28 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 function Sidebar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <aside className="sidebar">
-      <h2>La Tavola Admin</h2>
+      <div className="sidebar-header">
+        <h2>La Tavola Admin</h2>
 
-      <NavLink
-        to="/dashboard"
-        className={({ isActive }) => (isActive ? "active-link" : "")}
-      >
-        Dashboard
-      </NavLink>
+        <button
+          className="sidebar-toggle"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          ☰
+        </button>
+      </div>
 
-      <NavLink
-        to="/products"
-        className={({ isActive }) => (isActive ? "active-link" : "")}
-      >
-        Products
-      </NavLink>
-
-      <NavLink
-        to="/categories"
-        className={({ isActive }) => (isActive ? "active-link" : "")}
-      >
-        Categories
-      </NavLink>
-      <NavLink
-  to="/site-content"
-  className={({ isActive }) => (isActive ? "active-link" : "")}
->
-  Site Content
-</NavLink>
+      <div className={menuOpen ? "sidebar-links open" : "sidebar-links"}>
+        <NavLink to="/dashboard">Dashboard</NavLink>
+        <NavLink to="/categories">Categories</NavLink>
+        <NavLink to="/products">Products</NavLink>
+        <NavLink to="/site-content">Site Content</NavLink>
+      </div>
     </aside>
   );
 }
